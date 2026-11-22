@@ -6,7 +6,6 @@ The task is to classify each photo as a cat or a dog. I trained ResNet34 and Res
 
 ## Setup
 
-In Colab, run this cell and connect Google Drive when prompted. The notebook reads the two course archives from `My Drive/MLT_HW4` and prepares them in the runtime folder. Select a GPU runtime for faster evaluation. Outside Colab, place both ZIP files next to this notebook.
 
 ~~~python
 from pathlib import Path
@@ -24,7 +23,6 @@ from torchvision import models
 
 DATA_DIR = Path.cwd()
 
-# Prepare the local files in a fresh Colab runtime.
 if not (DATA_DIR / "Task_4_Contest_v4_bundle.zip").is_file() or not (DATA_DIR / "Cats_and_Dogs.zip").is_file():
     import lzma
     import shutil
@@ -138,7 +136,6 @@ def repeat_training():
     import sys
     import tempfile
 
-    # The training scripts keep checkpoints and caches next to their own files.
     work = Path(tempfile.mkdtemp(prefix="contest_training_", dir=DATA_DIR))
     for name in bundle.namelist():
         if name.endswith(("config.json", "_paths.json", "_labels.npy")) or name in (
